@@ -1,0 +1,48 @@
+<a class="pull-left" href="/"><img src="\assets\Logo.png" id="logo"></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Home</a>
+</nav>
+
+<html>
+    <div class="form">
+        <form [formGroup]="FarmerLogin" (ngSubmit)="onSubmit()">
+            <div class="container">
+                <h2>FARMER LOGIN</h2><br>
+                <div class="form-row">              
+                    <label for="Email Id">Email-Id: </label>
+                    <input type="email" class="form-control" placeholder="Email id" name="EmailId" id="EmailId" formControlName="EmailId">
+                </div>  
+                <small class="form-text text-muted" 
+                    *ngIf="FarmerLogin.controls.EmailId.touched && FarmerLogin.controls.EmailId.errors?.required">Please enter email address.!
+                </small>
+                <small class="form-text text-muted"
+                    *ngIf="FarmerLogin.controls.EmailId.touched && FarmerLogin.controls.EmailId.errors?.email">
+                    Email address not well formed.!
+                </small>
+                <br>
+                <div class="form-row">   
+                    <label for="Password">Password: </label>
+                    <input type="password"class="form-control" placeholder="password"  name="Password" id="Password" formControlName="Password">
+                </div>        
+                <small class="form-text text-muted" 
+                *ngIf="FarmerLogin.controls.Password.touched && FarmerLogin.controls.Password.errors?.required">Please enter password
+                </small>
+                <br>
+                <button type="submit" class="btn btn-primary" [disabled]="!FarmerLogin.valid">Submit</button>
+                <div>
+                    <a href="#" style="color:blue">Forgot Password?</a>
+                </div>
+                <hr>
+                <div>New User?</div>
+                <br>
+                <button class="btn btn-primary" (click)="registration()">Register</button>
+            </div>
+        </form>
+    </div>
+ </html>
+ <footer class="page-footer font-small unique-color-dark pt-4">
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a href="#"> SchemeForFarmers.com</a>
+        </div>
+</footer> 
+      

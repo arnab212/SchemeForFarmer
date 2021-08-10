@@ -1,0 +1,30 @@
+
+.container
+{
+    background-color: rgba(240, 248, 255, 0.527);
+    /* padding-left: 30%;
+    padding-right: 30%;
+    width: 1500px;
+    height: 500px; */
+    margin: 0 auto;
+    width:500px;
+    padding: 25px;
+    
+}
+
+.form
+{
+    margin: 0 auto;
+    text-align: center;
+}
+#logo{
+    
+    height: 100px;
+}
+html{
+    background-image: url("src\assets\Background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 85%;
+}

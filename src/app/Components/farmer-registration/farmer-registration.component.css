@@ -1,0 +1,46 @@
+ html 
+ {
+     background-image: url("src\assets\Background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+ }
+ .container
+{
+    width: 1000px;   
+    padding: 25px;
+    margin: 0 auto;
+    
+}
+.form
+{
+    background-color: rgba(240, 248, 255, 0.527);
+    padding-left: 100px;
+    padding-right: 50px;
+}
+button
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 100px;
+    padding-right:100px;
+    margin-left: 50px;
+    margin-right: 50px;
+   
+   
+}
+#logo{
+    
+    height: 100px;
+}
+h3
+{
+    text-decoration: underline;
+}
+.error
+{
+   color:rgb(214, 19, 19);
+   
+}
+  
