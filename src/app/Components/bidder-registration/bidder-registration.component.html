@@ -1,1 +1,179 @@
-<p>bidder-registration works!</p>
+<a class="pull-left" href="/"><img src="\assets\Logo.png" id="logo"></a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Back To Home <span class="sr-only"></span></a>
+        </li>
+       
+      </ul>
+     </div>
+  </nav>
+  <html>
+  <div class="container">
+
+<div class="form">
+<form [formGroup]="BidderRegistration" (ngSubmit)="create(BidderRegistration.value)">
+    
+       <h3>Personal Details</h3>
+
+        <div class="form-row">        
+            <div class="col-6">
+                <label for="Fullname" class="col-sm-2 col-form-label col-form-label-lg">Fullname: </label>
+                <input type="text" class="form-control" placeholder="Full Name" name="FullName" id="Fullname" formControlName="FullName">
+                <span class="error" *ngIf="BidderRegistration.controls.FullName.invalid && BidderRegistration.controls.FullName.touched">Please enter your name</span>
+                
+               
+              </div>  
+            <div class="col-6">
+                <label for="ContactNumber" class="col-sm-2 col-form-label col-form-label-lg">Contact: </label>
+                <input type="text"class="form-control" placeholder="Contact"  name="ContactNumber" id="ContactNumber" formControlName="ContactNumber">
+                <span class="error" *ngIf="BidderRegistration.controls.ContactNumber.invalid && BidderRegistration.controls.ContactNumber.touched">Phone Number is required</span>
+                <br><span class="error" *ngIf="BidderRegistration.controls.ContactNumber.invalid && BidderRegistration.controls.ContactNumber.dirty">Phone Number should only contain numbers and contain 10 digits</span>
+                 
+            </div>        
+        </div>
+
+    <div class="form-row">
+       
+        <div class="form-group col-md-6">
+                    <label for="EmailId" class="col-sm-2 col-form-label col-form-label-lg">Email: </label>
+                    <input type="email"  class="form-control" placeholder="Email" name="EmailId" id="EmailId" formControlName="EmailId">
+                    <span class="error" *ngIf="BidderRegistration.controls.EmailId.invalid&&(BidderRegistration.controls.EmailId.touched && BidderRegistration.controls.EmailId.dirty)">Invalid Email</span>
+                    <br><span class="error" *ngIf="BidderRegistration.controls.EmailId.invalid && (BidderRegistration.controls.EmailId.touched&&!BidderRegistration.controls.EmailId.dirty)">Email is required</span>
+        </div>
+    <div class="form-group col-md-6">
+          <label for="AadharCardNumber" class="col-sm-2 col-form-label col-form-label-lg">Aadhar_Card_Number: </label>
+          <input type="text"  class="form-control" placeholder="Aadhar Card Number" name="AadharCardNumber" id="AadharCardNumber" formControlName="AadharCardNumber">
+          <span class="error" *ngIf="BidderRegistration.controls.AadharCardNumber.invalid && BidderRegistration.controls.AadharCardNumber.touched">Aadhar Number is required</span>
+                <br><span class="error" *ngIf="BidderRegistration.controls.AadharCardNumber.invalid && BidderRegistration.controls.AadharCardNumber.dirty">Aadhar Number should only contain numbers and contain 12 digits</span>
+        </div>
+       
+        </div> 
+        <div class="form-row">
+          <br>
+        <h3>Address Details</h3>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <label for="Address" class="col-sm-2 col-form-label col-form-label-lg">Address: </label>
+                <input type="text"  class="form-control" placeholder="Address" name="Address" id="Address" formControlName="Address">
+                <span class="error" *ngIf="BidderRegistration.controls.Address.invalid && BidderRegistration.controls.Address.touched">Address is required</span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="City" class="col-sm-2 col-form-label col-form-label-lg">City: </label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="City">
+                  <option [ngValue]="null" value="" disabled>Choose your city</option>
+                  <option value="City" *ngFor="let c of city" [ngValue]="c.city">{{c.city}}</option>               
+              </select>
+                <span class="error" *ngIf="BidderRegistration.controls.City.invalid && BidderRegistration.controls.City.touched">City is required</span>
+           </div> 
+           <div class="form-group col-md-4">
+                <label for="State" class="col-sm-2 col-form-label col-form-label-lg">State: </label>
+                <input type="text" class="form-control" placeholder="State" name="State" id="State" formControlName="State">
+                <span class="error" *ngIf="BidderRegistration.controls.State.invalid && BidderRegistration.controls.State.touched">State is required</span>
+           </div>        
+           <div class="form-group col-md-4">
+                <label for="Pincode" class="col-sm-2 col-form-label col-form-label-lg">PIN Code: </label>
+                <input type="text" class="form-control" placeholder="PIN" name="Pincode" id="Pincode" formControlName="Pincode">
+                <span class="error" *ngIf="BidderRegistration.controls.Pincode.invalid && BidderRegistration.controls.Pincode.touched">Pincode is required</span>
+           </div>
+             
+         </div>
+         <div class="form-row">
+           <br>
+         <h3>Bank Details</h3>
+         </div>
+         <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="AccountNumber" class="col-sm-2 col-form-label col-form-label-lg">AccountNumber: </label>
+                <input type="text" class="form-control" placeholder="Account number" name="AccountNumber" id="AccountNumber" formControlName="AccountNumber">
+                <span class="error" *ngIf="BidderRegistration.controls.AccountNumber.invalid && (BidderRegistration.controls.AccountNumber.touched && !BidderRegistration.controls.AccountNumber.dirty)">Account Number is required</span>
+                <br><span class="error" *ngIf="BidderRegistration.controls.AccountNumber.invalid && BidderRegistration.controls.AccountNumber.dirty">Account Number should only contain numbers and contain atleast 9 and at max 18 digits</span>
+            </div>         
+            <div class="form-group col-md-6">
+                <label for="IFSC" class="col-sm-2 col-form-label col-form-label-lg">IFSC Code</label>
+                <input type="text" class="form-control" placeholder="IFSC code" name="IFSC" id="IFSC" formControlName="IFSC">
+                <span class="error" *ngIf="BidderRegistration.controls.IFSC.invalid && BidderRegistration.controls.IFSC.touched">IFSC is required</span>
+                <br><span class="error" *ngIf="BidderRegistration.controls.IFSC.invalid && BidderRegistration.controls.IFSC.dirty">IFSC contain 11 character</span>
+            </div>
+         </div>
+         <div class="form-row">
+           <br>
+         <h3>Document Upload</h3>
+         </div>
+         <div class="form-row">
+            <div class="file-field">
+                <div class="form-group col-md-4">
+                    <label for="AadharDocument" class="col-sm-2 col-form-label col-form-label-lg">Aadhar Document: </label><br>
+                    <div class="btn btn-primary btn-sm float-left">
+                        <span>Choose file</span>
+                        <input type="file" class="form-control" name="AadharDocument" id="AadharDocument" (change)="onFileChange($event, 'AadharDocument')" >
+                        <span class="error" *ngIf="BidderRegistration.controls.AadharDocument.invalid && BidderRegistration.controls.AadharDocument.touched">Aadhar Document is required</span>
+                      </div>
+                </div> 
+
+             </div>
+            
+             <div class="form-group col-md-4">
+                    <label for="PanDocument" class="col-sm-2 col-form-label col-form-label-lg">PAN Document: </label><br>
+                    <div class="btn btn-primary btn-sm float-left">
+                        <span>Choose file</span>
+                        <input type="file" class="form-control" name="PanDocument" id="PanDocument" (change)="onFileChange($event, 'PanDocument')">
+                        <span class="error" *ngIf="BidderRegistration.controls.PanDocument.invalid && BidderRegistration.controls.PanDocument.touched">Pan Document is required</span>
+                      </div>
+             </div>
+             
+             
+             <div class="form-group col-md-4">
+                    <label for="TradersLisenceDocument" class="col-sm-2 col-form-label col-form-label-lg">Traders_Lisence_Document: </label><br>
+                    <div class="btn btn-primary btn-sm float-left">
+                        <span>Choose file</span>
+                        <input type="file" class="form-control" name="TradersLisenceDocument" id="TradersLisenceDocument" (change)="onFileChange($event, 'TradersLisenceDocument')">
+                        <span class="error" *ngIf="BidderRegistration.controls.TradersLisenceDocument.invalid && BidderRegistration.controls.TradersLisenceDocument.touched">Certificate Document is required</span>
+                      </div>
+             </div>         
+         
+        </div> 
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="Password" class="col-sm-2 col-form-label col-form-label-lg">Password: </label>
+              <input type="password" class="form-control" placeholder="Password" name="Password" id="Password" formControlName="Password">
+              <span class="error" *ngIf="BidderRegistration.controls.Password.invalid && BidderRegistration.controls.Password.touched">Password is required</span>
+              <br><span class="error" *ngIf="BidderRegistration.controls.Password.invalid && BidderRegistration.controls.Password.dirty">Password contain atleast 12 characters</span>
+          </div>         
+          <div class="form-group col-md-6">
+              <label for="ConfirmPassword" class="col-sm-2 col-form-label col-form-label-lg">ConfirmPassword</label>
+              <input type="password" class="form-control" placeholder="Confirm Password" name="ConfirmPassword" id="ConfirmPassword" formControlName="ConfirmPassword">
+              <span class="error" *ngIf="BidderRegistration.controls.ConfirmPassword.invalid && BidderRegistration.controls.ConfirmPassword.touched">Password didn't match</span>        
+          </div>
+       </div>
+       <br> 
+       <tr>
+         <td> <button type="submit" class="btn btn-primary" [disabled]="!BidderRegistration.valid">REGISTER</button> </td>
+       <td><button type="reset" class="btn btn-primary">RESET</button></td>
+         
+       </tr>   
+   
+</form>
+</div>
+</div>
+</html>
+<footer class="page-footer font-small unique-color-dark pt-4">
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="#"> SchemeForFarmers.com</a>
+  </div>
+</footer>
+
+
+
+

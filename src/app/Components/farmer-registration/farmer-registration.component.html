@@ -88,8 +88,43 @@
            </div>
              
          </div>
+         <br>
+         <h3>LAND DETAILS</h3>
+        
+       
+        <div class="form-row">
+            <div class="form-group col-md-10">
+              <label for="LandArea" class="col-sm-2 col-form-label col-form-label-lg">Area: </label>
+              <input type="number"  class="form-control" placeholder="Land Area" name="LandArea" id="AdLandArearess" formControlName="LandArea" >
+              <span class="error" *ngIf="FarmerRegistration.controls.Address.invalid && FarmerRegistration.controls.Address.touched">Address is required</span>
+           </div>
+        </div>
+        <div class="form-group col-md-10">
+            <label for="LandAddress" class="col-sm-2 col-form-label col-form-label-lg">Address: </label>
+            <input type="text"  class="form-control" placeholder="Land Address" name="LandAddress" id="LandAddress"  formControlName="LandAddress" >
+            <span class="error" *ngIf="FarmerRegistration.controls.Address.invalid && FarmerRegistration.controls.Address.touched">Address is required</span>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="LandPin" class="col-sm-2 col-form-label col-form-label-lg">PIN_Code: </label>
+          <input type="text" class="form-control" placeholder="Land Pin code" name="LandPin" id="LandPin" formControlName="LandPin">
+          <span class="error" *ngIf="FarmerRegistration.controls.Pincode.invalid && FarmerRegistration.controls.Pincode.touched">Pincode is required</span>
+        </div>
+          <div class="form-group col-md-4">
+              <label for="LandCity" class="col-sm-2 col-form-label col-form-label-lg">City: </label>
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="LandCity">
+                <option [ngValue]="null" value="" disabled>Choose your city</option>
+                <option value="City" *ngFor="let c of city" [ngValue]="c.city">{{c.city}}</option>               
+            </select>
+              <span class="error" *ngIf="FarmerRegistration.controls.City.invalid && FarmerRegistration.controls.City.touched">City is required</span>
+         </div>           
+        
+        
+        
+        
+
          <div class="form-row">
-           <br>
+           <br>       
+           
          <h3>Bank Details</h3>
          </div>
          <div class="form-row">

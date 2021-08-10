@@ -4,8 +4,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CityState } from 'src/app/Models/CityState';
 import { FarmerDetails } from 'src/app/Models/FarmerDetails';
+import { LandDetails } from 'src/app/Models/LandDetails';
 import { CityStateService } from 'src/app/Services/city-state.service';
 import { FarmerDetailsService } from 'src/app/Services/farmer-details.service';
+import { LandDetailsService } from 'src/app/Services/land-details.service';
 import { PasswordCheck } from 'src/app/Validators/CustomeValidation';
 
 @Component({
@@ -16,8 +18,8 @@ import { PasswordCheck } from 'src/app/Validators/CustomeValidation';
 export class FarmerRegistrationComponent implements OnInit 
 {
   city:CityState[]=[] 
-
-
+  
+  
   FarmerRegistration =new FormGroup
   ({
     FullName: new FormControl("",[Validators.required,Validators.pattern("^[ a-zA-Z]+$")]),
@@ -34,33 +36,51 @@ export class FarmerRegistrationComponent implements OnInit
     PanDocument: new FormControl("",[Validators.required]),
     CertificateDocument: new FormControl("",[Validators.required]),
     Password: new FormControl("",[Validators.required,Validators.minLength(8)]),
-    ConfirmPassword: new FormControl("",[Validators.required,PasswordCheck])
+    ConfirmPassword: new FormControl("",[Validators.required,PasswordCheck]),
+    LandArea: new FormControl("",[Validators.required]),
+    LandAddress: new FormControl("",[Validators.required]),
+    LandPin: new FormControl("",[Validators.required]),
+    LandCity: new FormControl("",[Validators.required])
   })
+  
 
-  constructor(private farmer:FarmerDetailsService, private cityservice:CityStateService, private route: Router) 
+ 
+
+  constructor(private farmer:FarmerDetailsService,private landservice: LandDetailsService, private cityservice:CityStateService, private route: Router, private land: LandDetails) 
   {
     this.cityservice.getCity().subscribe(data=>{this.city=data;
-      console.log(this.city);});
-     
-    
-   }
+      console.log(this.city);});    
+  }
 
   ngOnInit(): void {
   }
   create(data:any)
   {
     let files = new FormData();
+    
     for (let key of ["AadharDocument","PanDocument","CertificateDocument"]) 
     {
       files.append(key, data[key]);
     }
+    this.land.aadharCardNumber=this.FarmerRegistration.controls.AadharCardNumber.value;
+    this.land.address=this.FarmerRegistration.controls.LandAddress.value;
+    this.land.area=this.FarmerRegistration.controls.LandArea.value;
+    this.land.city=this.FarmerRegistration.controls.LandCity.value;
+    this.land.pincode=this.FarmerRegistration.controls.LandPin.value;
     this.farmer.upload(files).subscribe(references => {
       for (let key of Object.keys(references) as Array<keyof typeof references>) {
         data[key] = references[key];
       }
       delete data["ConfirmPassword"];
       delete data["State"];
+      delete data["LandAddress"];
+      delete data["LandArea"];
+      delete data["LandCity"];
+      delete data["LandPin"];
       this.farmer.createnew(data).subscribe(data=>{
+        console.log(data);
+      });
+      this.landservice.createnewLand(this.land).subscribe(data=>{
         console.log(data);
       });
     });

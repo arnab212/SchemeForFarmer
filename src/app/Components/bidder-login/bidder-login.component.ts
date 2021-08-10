@@ -26,8 +26,7 @@ export class BidderLoginComponent implements OnInit {
 
   onSubmit() 
   {
-    this.bidder.getall().subscribe(data=>{this.bidders=data;
-      console.log(this.bidders);});
+    
     if(this.BidderLogin.valid) 
     {
       console.log(this.v());
@@ -53,10 +52,16 @@ export class BidderLoginComponent implements OnInit {
   v() {
     return this.BidderLogin.value;
   }
-  ngOnInit():void{}
+  ngOnInit():void
+  {
+    this.bidder.getall().subscribe(data=>{this.bidders=data;
+      console.log(this.bidders);});
+  }
+
+
   registration()
   {
-    this.route.navigate(['farmer-registration']);
+    this.route.navigate(['bidder-registration']);
   }
 
 }

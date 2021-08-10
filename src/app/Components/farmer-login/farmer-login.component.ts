@@ -21,6 +21,8 @@ export class FarmerLoginComponent implements OnInit {
       EmailId: new FormControl('', [Validators.required, Validators.email]),
       Password: new FormControl('', [Validators.required])
     });
+    this.farmer.getall().subscribe(data=>{this.farmers=data;
+      console.log(this.farmers);});
    
   }
 
@@ -53,7 +55,9 @@ export class FarmerLoginComponent implements OnInit {
   v() {
     return this.FarmerLogin.value;
   }
-  ngOnInit():void{}
+  ngOnInit():void
+  {}
+    
   registration()
   {
     this.route.navigate(['farmer-registration']);
