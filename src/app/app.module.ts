@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SellRequestComponent } from './Components/sell-request/sell-request.component';
 import { InsuranceComponent } from './Components/insurance/insurance.component';
 import { CropSoldHistoryComponent } from './Components/crop-sold-history/crop-sold-history.component';
+import { BidderHomeComponent } from './Components/bidder-home/bidder-home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CropSoldHistoryComponent } from './Components/crop-sold-history/crop-so
     BidderRegistrationComponent,
     SellRequestComponent,
     InsuranceComponent,
-    CropSoldHistoryComponent
+    CropSoldHistoryComponent,
+    BidderHomeComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,8 @@ export class BidderLoginComponent implements OnInit {
       EmailId: new FormControl('', [Validators.required, Validators.email]),
       Password: new FormControl('', [Validators.required])
     });
+    this.bidder.getall().subscribe(data=>{this.bidders=data;
+      console.log(this.bidders);});   
    
   }
 

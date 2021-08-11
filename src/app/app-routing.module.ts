@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BidderHomeComponent } from './Components/bidder-home/bidder-home.component';
 import { BidderLoginComponent } from './Components/bidder-login/bidder-login.component';
 import { BidderRegistrationComponent } from './Components/bidder-registration/bidder-registration.component';
 import { CropSoldHistoryComponent } from './Components/crop-sold-history/crop-sold-history.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: "marketplace", component: MarketPlaceComponent},
   {path: "sell-request", component: SellRequestComponent},
   {path: "insurance", component: InsuranceComponent},
-  {path: "crop-sold-history", component: CropSoldHistoryComponent}
+  {path: "crop-sold-history", component: CropSoldHistoryComponent},
+  {path: "bidder-home", component: BidderHomeComponent}
 ];
 
 @NgModule({

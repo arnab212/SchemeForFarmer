@@ -31,7 +31,7 @@ export class BidderRegistrationComponent implements OnInit
     IFSC: new FormControl("",[Validators.required,Validators.minLength(11),Validators.maxLength(11)]),
     AadharDocument: new FormControl("",[Validators.required]),
     PanDocument: new FormControl("",[Validators.required]),
-    TradersLisenceDocument: new FormControl("",[Validators.required]),
+    TradersLicenseDocument: new FormControl("",[Validators.required]),
     Password: new FormControl("",[Validators.required,Validators.minLength(8)]),
     ConfirmPassword: new FormControl("",[Validators.required,PasswordCheck])
   })
@@ -49,7 +49,7 @@ export class BidderRegistrationComponent implements OnInit
   create(data:any)
   {
     let files = new FormData();
-    for (let key of ["AadharDocument","PanDocument","CertificateDocument"]) 
+    for (let key of ["AadharDocument","PanDocument","TradersLicenseDocument"]) 
     {
       files.append(key, data[key]);
     }

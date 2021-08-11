@@ -8,14 +8,68 @@
     <a href="/crop-sold-history">View Sold Crop History</a>
     <a href="/insurance">Calculate and Claim Insurance</a>
 </div>
+<html>
   
 <div class="content">
-  Sell Request
+  <h2>Sell Request</h2>
+  <div class="container">
+    <form [formGroup]="SellRequest" (ngSubmit)="create(SellRequest.value)">
+      
+      <div class="row">
+        <div class="col-25">
+          <label for="text">Crop Type</label>
+        </div>
+        <div class="col-75">
+            <select id="Crop Type" name="CropType" formControlName="cropType">
+                <option value="Kharif">Kharif</option>
+                <option value="Rabi">Rabi</option>
+              </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Crop Name">Crop Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text"  name="CropName" formControlName="cropName" placeholder="Crop Name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Fertilizer Type">Fertilizer Type</label>
+        </div>
+        <div class="col-75">
+          <input type="text"  name="FertilizerType" formControlName="fertilizerType" placeholder="Fertilizer Type">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Quantity">Quantity</label>
+        </div>
+        <div class="col-75">
+            <input type="number"  name="Quantity" formControlName="cropQuantity" placeholder="Quantity">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Soil PH Certificate">Soil PH Certificate</label>
+        </div>
+        <div class="col-75">
+            <input type="file" accept="application/pdf" name="SoilPHCertificate"formControlName="soilPhCertificateDocument" (change)="onFileChange($event, 'SoilPHCertificateDocument')" placeholder="Soil PH Certificate" class="btn btn-primary btn-sm float-left">
+        </div>
+      </div>
+  <br>
+        <button class="btn btn-primary">Place Request</button>
+     
+    </form>
+  </div>
+  
+  
 </div>
+</html>
 <footer class="page-footer font-small unique-color-dark pt-4">
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
         <a href="#"> SchemeForFarmers.com</a>
     </div>
 </footer>
-
 

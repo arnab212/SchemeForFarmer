@@ -36,6 +36,7 @@ export class FarmerLoginComponent implements OnInit {
     {
       if(farmer.emailId==this.FarmerLogin.controls.EmailId.value && farmer.password==this.FarmerLogin.controls.Password.value)
       {
+        localStorage.setItem('aadharCardNumber',farmer.aadharCardNumber)
         //redirect to farmer home
         this.route.navigate(['marketplace']);
         alert("successful");
