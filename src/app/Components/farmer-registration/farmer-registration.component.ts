@@ -17,7 +17,8 @@ import { PasswordCheck } from 'src/app/Validators/CustomeValidation';
 })
 export class FarmerRegistrationComponent implements OnInit 
 {
-  city:CityState[]=[] 
+  city:CityState[]=[];
+  land= new LandDetails();
   
   
   FarmerRegistration =new FormGroup
@@ -46,7 +47,7 @@ export class FarmerRegistrationComponent implements OnInit
 
  
 
-  constructor(private farmer:FarmerDetailsService,private landservice: LandDetailsService, private cityservice:CityStateService, private route: Router, private land: LandDetails) 
+  constructor(private farmer:FarmerDetailsService,private landservice: LandDetailsService,  private cityservice:CityStateService, private route: Router) 
   {
     this.cityservice.getCity().subscribe(data=>{this.city=data;
       console.log(this.city);});    
@@ -62,11 +63,14 @@ export class FarmerRegistrationComponent implements OnInit
     {
       files.append(key, data[key]);
     }
-    this.land.aadharCardNumber=this.FarmerRegistration.controls.AadharCardNumber.value;
-    this.land.address=this.FarmerRegistration.controls.LandAddress.value;
-    this.land.area=this.FarmerRegistration.controls.LandArea.value;
-    this.land.city=this.FarmerRegistration.controls.LandCity.value;
-    this.land.pincode=this.FarmerRegistration.controls.LandPin.value;
+     this.land.aadharCardNumber=this.FarmerRegistration.controls.AadharCardNumber.value;
+     this.land.address=this.FarmerRegistration.controls.LandAddress.value;
+     this.land.area=this.FarmerRegistration.controls.LandArea.value;
+     this.land.city=this.FarmerRegistration.controls.LandCity.value;
+     this.land.pincode=this.FarmerRegistration.controls.LandPin.value;
+     this.landservice.createnewLand(this.land).subscribe(data=>{
+       console.log(data);
+     });
     this.farmer.upload(files).subscribe(references => {
       for (let key of Object.keys(references) as Array<keyof typeof references>) {
         data[key] = references[key];
@@ -80,9 +84,7 @@ export class FarmerRegistrationComponent implements OnInit
       this.farmer.createnew(data).subscribe(data=>{
         console.log(data);
       });
-      this.landservice.createnewLand(this.land).subscribe(data=>{
-        console.log(data);
-      });
+      
     });
     this.route.navigate(['farmer-login']);
   }
@@ -96,6 +98,6 @@ export class FarmerRegistrationComponent implements OnInit
     } 
 
   }
-   // Choose city using select dropdown
+   
  
 }

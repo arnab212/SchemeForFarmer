@@ -13,7 +13,7 @@ export class FarmerDetailsService {
   constructor(private http: HttpClient) { }
  // req:string="https://localhost:44356/api/FarmerDetails";
 
-  getall():Observable<FarmerDetails[]>
+  getallFarmers():Observable<FarmerDetails[]>
   {
     return this.http.get<FarmerDetails[]>(`${environment.apiUrl}/FarmerDetails`)
   }

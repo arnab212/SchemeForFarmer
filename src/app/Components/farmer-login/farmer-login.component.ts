@@ -21,15 +21,13 @@ export class FarmerLoginComponent implements OnInit {
       EmailId: new FormControl('', [Validators.required, Validators.email]),
       Password: new FormControl('', [Validators.required])
     });
-    this.farmer.getall().subscribe(data=>{this.farmers=data;
-      console.log(this.farmers);});
-   
+    this.farmer.getallFarmers().subscribe(data=>{this.farmers=data;
+      console.log(this.farmers);});    
   }
 
   onSubmit() 
   {
-    this.farmer.getall().subscribe(data=>{this.farmers=data;
-      console.log(this.farmers);});
+   
     if(this.FarmerLogin.valid) 
     {
       console.log(this.v());
