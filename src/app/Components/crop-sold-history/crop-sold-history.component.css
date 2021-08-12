@@ -1,52 +1,64 @@
 .navbar{
-    background-color:#001727;
-    width:100%;
-    color: white;
+  background-color:#001727;
+  width:100%;
+  color: white;
 }
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #7499ff;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-  }
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #7499ff;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #446392;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: 446392;
+}
+.sidebar a:hover:not(.active) {
+  background-color: #446392;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  text-align: center;
   
-  .sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
   }
-   
-  .sidebar a.active {
-    background-color: #446392;
-    color: white;
-  }
-  
-  .sidebar a:hover:not(.active) {
-    background-color: 446392;
-  }
- .sidebar a:hover:not(.active) {
-    background-color: #446392;
-    color: white;
-  }
-  
-  div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    text-align: center;
-    
-  }
-  
-  @media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
-  
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+th{
+border: 1px solid black;
+text-align: left;
+padding: 10px;
+background-color: lightgrey;
+
+}
+td{
+border: 1px solid black;
+text-align: left;
+padding: 20px;
+} 

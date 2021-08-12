@@ -11,26 +11,26 @@ import { RequestDetailsService } from 'src/app/Services/request-details.service'
 })
 export class SellRequestComponent implements OnInit
 {
-  [x: string]: any;
+ 
 rd= {} as RequestDetails; 
-
+flag=0;
 SellRequest =new FormGroup
 ({
   cropName: new FormControl("",[Validators.required]),
   fertilizerType: new FormControl("",[Validators.required]),
   cropQuantity: new FormControl("",[Validators.required]),
   cropType:new FormControl(""),
+  Msp: new FormControl("",[Validators.required]),
   soilPhCertificateDocument: new FormControl("",[Validators.required]),
 })
 
 
 constructor(private seller:RequestDetailsService,private route: Router) 
-{    
- }
+{}
 
 
-ngOnInit(): void {
-}
+ngOnInit(): void {}
+
 create(data:any)
 {
   let files = new FormData();
@@ -43,6 +43,8 @@ create(data:any)
   this.rd.cropQuantity=this.SellRequest.controls.cropQuantity.value;
   this.rd.cropType=this.SellRequest.controls.cropType.value;
   this.rd.fertilizerType=this.SellRequest.controls.fertilizerType.value;
+  this.rd.msp=this.SellRequest.controls.Msp.value;
+  this.rd.currentBid=this.SellRequest.controls.Msp.value;
   
   this.seller.upload(files).subscribe(references => {
     for (let key of Object.keys(references) as Array<keyof typeof references>) {
@@ -53,8 +55,17 @@ create(data:any)
    
     this.seller.createnew(this.rd).subscribe(data=>{
       console.log(data);
+      this.flag++;
     });
-  });}
+  });
+  if(this.flag>0)
+  {
+    alert("Request Placed Successfully");
+  this.route.navigate(['marketplace']);
+  }
+  else{alert("sorry your order was not placed")}
+  
+}
   onFileChange(event: any, fieldname: string) {
 
     if (event.target.files.length > 0)

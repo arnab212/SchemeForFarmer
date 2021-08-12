@@ -23,7 +23,8 @@ const routes: Routes = [
   {path: "sell-request", component: SellRequestComponent},
   {path: "insurance", component: InsuranceComponent},
   {path: "crop-sold-history", component: CropSoldHistoryComponent},
-  {path: "bidder-home", component: BidderHomeComponent}
+  {path: "bidder-home", component: BidderHomeComponent},
+  {path: "crop-sold-history", component: CropSoldHistoryComponent}
 ];
 
 @NgModule({

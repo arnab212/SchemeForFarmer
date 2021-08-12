@@ -37,4 +37,14 @@ export class BidderDetailsService
        })
      });
    }
+   getbyId(id:string):Observable<any>
+  {
+    return this.http.get<any>(`${environment.apiUrl}/BidderDetails/`+id,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
 }

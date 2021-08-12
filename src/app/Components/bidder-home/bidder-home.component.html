@@ -1,40 +1,60 @@
+
 <div class="navbar">
     <h2 style="padding-top:10px;">Welcome</h2>
     <a href="/farmer-login" class="btn btn-primary">Logout</a>
 </div>
 <div class="sidebar">
-    <a class="active" href="/marketplace">View marketplace</a>
-    <a href="#">BIDDING HISTORY</a>
-    <a href="#">VIEW CROPS BOUGHT</a>
+    <a href="/marketplace">View marketplace</a>
+    <a class="active" href="/sell-request">Place Sell Request</a>
+    <a href="/crop-sold-history">View Sold Crop History</a>
+    <a href="/insurance">Calculate and Claim Insurance</a>
 </div>
+<html>
   
 <div class="content">
-  MarketPlace
-  <table>
-      <tr>
-          <td>Crop: CropNameHere</td>
-      </tr>
-      <tr>
-          <td>Current Bid</td>
-      </tr>
-      <tr>
-          <td><b>Rs 200</b></td>
-      </tr>
-      <tr>
-          <td><a href="" class="btn btn-info">BUY CROPS</a></td>
-          <span></span>
-      </tr>
-      <tr>
-        <td><a href="" class="btn btn-secondary">Previous Bids</a></td>
-      </tr>
-      <tr>
-        <td><a href="" class="btn btn-success">BID</a></td>
-      </tr>
-  </table>
-</div>
-<footer class="page-footer font-small unique-color-dark pt-4">
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="#"> SchemeForFarmers.com</a>
+  <h2>Welcome</h2>
+  <div class="row">
+    <div class="column">
+      <img src="\assets\rice.jpg" style="width:100%;height: 310px"><br><br> 
+      <button (click) = toggleDisplay() class="btn btn-info">View Details</button><br>
+      <div [hidden] = isShow><h5>Rice<br>200</h5></div>
+      <button (click)="decrement()"class="btn btn-info">-</button>&nbsp;&nbsp;
+        <input type="number" value="{{count}}">&nbsp;&nbsp;
+        <button (click)="increment()"class="btn btn-info">+</button> <br>
+ 
+  <button class="btn btn-info">Bid</button>
+        
     </div>
-</footer>
+    <div class="column">
+      <img src="\assets\maize.jpg" style="width:100%;height: 310px"><br><br>
+      <button (click) = toggleDisplay1() class="btn btn-info">View Details</button><br>
+      <div [hidden] = isShoww><h5>Maize<br> 400</h5></div>
+      <button (click)="decrement1()"class="btn btn-info">-</button>&nbsp;&nbsp;
+     <input type="number" value="{{count1}}">&nbsp;&nbsp;
+     <button (click)="increment1()"class="btn btn-info">+</button><br>
+      <button class="btn btn-info">Bid</button>
+    </div>
+    <div class="column">
+      <img src="\assets\wheat.jpg" style="width:100%;height: 310px"><br><br>
+      <button (click) = toggleDisplay2() class="btn btn-info">View Details</button><br>
+      <div [hidden] = isshow><h5>Wheat<br>300</h5></div>
+      <button (click)="decrement2()"class="btn btn-info">-</button>&nbsp;&nbsp;
+      <input type="number" value="{{count2}}">&nbsp;&nbsp;
+      <button (click)="increment2()"class="btn btn-info">+</button><br>
+      <button class="btn btn-info">Bid</button>
+    </div>
+    <div class="column">
+        <img src="\assets\pulses.jpg" style="width:100%;height: 310px"><br><br>
+      <button (click) = toggleDisplay3() class="btn btn-info">View Details</button><br>
+      <div [hidden] = isshoww><h5>Pulses<br> 500</h5></div>
+      <button (click)="decrement3()"class="btn btn-info">-</button>&nbsp;&nbsp;
+        <input type="number" value="{{count3}}">&nbsp;&nbsp;
+        <button (click)="increment3()"class="btn btn-info">+</button><br>
+        
+        <button class="btn btn-info">Bid</button>
+        
+      </div>
 
+  </div>
+
+  </div>
