@@ -27,8 +27,8 @@ export class FarmerLoginComponent implements OnInit {
 
   onSubmit() 
   {
-   
-    if(this.FarmerLogin.valid) 
+   setTimeout(() => {
+     if(this.FarmerLogin.valid) 
     {
       console.log(this.v());
     }
@@ -49,6 +49,9 @@ export class FarmerLoginComponent implements OnInit {
     {
       alert("sorry");
     }
+     
+   }, 2000);
+    
     
   }
   v() {

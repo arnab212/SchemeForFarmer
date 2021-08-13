@@ -9,5 +9,7 @@ export interface RequestDetails
     cropQuantity:number;
     soilPhCertificateDocument:File;
     msp:number;
-    currentBid:number
+    cuurentBid:number;
+    status:boolean
+    show:boolean;
 }

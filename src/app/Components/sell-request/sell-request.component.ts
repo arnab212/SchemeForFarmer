@@ -44,7 +44,8 @@ create(data:any)
   this.rd.cropType=this.SellRequest.controls.cropType.value;
   this.rd.fertilizerType=this.SellRequest.controls.fertilizerType.value;
   this.rd.msp=this.SellRequest.controls.Msp.value;
-  this.rd.currentBid=this.SellRequest.controls.Msp.value;
+  this.rd.cuurentBid= this.rd.msp;
+  
   
   this.seller.upload(files).subscribe(references => {
     for (let key of Object.keys(references) as Array<keyof typeof references>) {
@@ -58,12 +59,16 @@ create(data:any)
       this.flag++;
     });
   });
-  if(this.flag>0)
+  setTimeout(() => {
+    if(this.flag>0)
   {
     alert("Request Placed Successfully");
   this.route.navigate(['marketplace']);
   }
   else{alert("sorry your order was not placed")}
+    
+  }, 2000);
+  
   
 }
   onFileChange(event: any, fieldname: string) {

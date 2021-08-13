@@ -28,8 +28,8 @@ export class BidderLoginComponent implements OnInit {
 
   onSubmit() 
   {
-    
-    if(this.BidderLogin.valid) 
+    setTimeout(() => {
+      if(this.BidderLogin.valid) 
     {
       console.log(this.v());
     }
@@ -37,8 +37,9 @@ export class BidderLoginComponent implements OnInit {
     {
       if(bidder.emailId==this.BidderLogin.controls.EmailId.value && bidder.password==this.BidderLogin.controls.Password.value)
       {
+        localStorage.setItem('aadharCardNumber', bidder.aadharCardNumber)
         //redirect to farmer home
-        this.route.navigate(['marketplace']);
+        this.route.navigate(['bidder-home']);
         alert("successful");
         this.flag++;
         break;
@@ -49,6 +50,10 @@ export class BidderLoginComponent implements OnInit {
     {
       alert("sorry");
     }
+      
+    }, 2000);
+    
+    
     
   }
   v() {

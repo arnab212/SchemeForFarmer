@@ -1,9 +1,9 @@
 <div class="navbar">
-    <h2 style="padding-top:10px;">Welcome</h2>
+    <h2 style="padding-top:10px;">Welcome, {{name}}</h2>
     <a href="/farmer-login" class="btn btn-primary">Logout</a>
 </div>
 <div class="sidebar">
-    <a class="active" href="/marketplace">View marketplace</a>
+    <a class="active" href="/marketplace">View Marketplace</a>
     <a href="/sell-request">Place Sell Request</a>
     <a href="/crop-sold-history">View Sold Crop History</a>
     <a href="/insurance">Calculate and Claim Insurance</a>
@@ -11,27 +11,39 @@
   
 <div class="content">
   MarketPlace
-  <table>
-      <tr>
-          <td>Crop: CropNameHere</td>
-      </tr>
-      <tr>
-          <td>Current Bid</td>
-      </tr>
-      <tr>
-          <td><b>Rs 200</b></td>
-      </tr>
-      <tr>
-          <td><a href="" class="btn btn-info">View Details</a></td>
-          <span></span>
-      </tr>
-      <tr>
-        <td><a href="" class="btn btn-secondary">Previous Bids</a></td>
-      </tr>
-      <tr>
-        <td><a href="" class="btn btn-success">SELL</a></td>
-      </tr>
-  </table>
+    <table *ngFor="let item of request;let i=index">
+        <tr>
+            <td>Crop: {{item.cropName}}</td>
+        </tr>
+        <tr>
+            <td>Current Bid</td>
+        </tr>
+        <tr>
+            <td><b>{{item.cuurentBid}}</b></td>
+        </tr>
+        <tr>
+            <td>
+                <button (click)="toggleViewDetails(item)" class="btn btn-info">{{buttonName}}</button>
+            </td>
+        </tr>
+        <div [hidden]="item.show">
+            <tr>
+                <td>Crop Type:{{item.cropType}}</td>
+            </tr>
+            <tr>
+                <td>Fertilizer Type:{{item.fertilizerType}}</td>
+            </tr>
+            <tr>
+                <td>MSP:{{item.msp}}</td>
+            </tr>
+        </div>
+        <tr>
+            <td><a href="" class="btn btn-secondary">Previous Bids</a></td>
+        </tr>
+        <tr>
+            <td><a href="" class="btn btn-success">SELL</a></td>
+        </tr>
+    </table>
 </div>
 <footer class="page-footer font-small unique-color-dark pt-4">
     <div class="footer-copyright text-center py-3">© 2020 Copyright:

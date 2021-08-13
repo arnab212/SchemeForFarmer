@@ -12,7 +12,7 @@ export class RequestDetailsService {
   constructor(private http: HttpClient) { }
   // req:string="https://localhost:44371/api/RequestDetails";
  
-   getall():Observable<RequestDetails[]>
+   getallrequests():Observable<RequestDetails[]>
    {
      return this.http.get<RequestDetails[]>(`${environment.apiUrl}/RequestDetails`)
    }
@@ -36,4 +36,12 @@ export class RequestDetailsService {
        })
      });
     }
+    update(id:number,request: RequestDetails):Observable<RequestDetails> {
+      return this.http.put<RequestDetails>(`${environment.apiUrl}/RequestDetails/`+id, request, {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Allow-Method':'*'
+        })
+      });
+     }
 }

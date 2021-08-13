@@ -28,7 +28,7 @@ export class CropSoldHistoryComponent implements OnInit
   constructor(private request: RequestDetailsService, private farmer: FarmerDetailsService, private sold:SoldDetailsService, private bidder: BidderDetailsService) 
   {
     
-      this.request.getall().subscribe(data=>{this.allRequest=data;
+      this.request.getallrequests().subscribe(data=>{this.allRequest=data;
         console.log(this.allRequest);}); 
       this.sold.getall().subscribe(data=>{this.allSold=data;
         console.log(this.allSold);}); 
@@ -59,7 +59,7 @@ export class CropSoldHistoryComponent implements OnInit
               this.soldhistory.push({rerId: req.requestId, cropname: req.cropName, quantity: req.cropQuantity,
                 soldprice: sol.soldPrice, boughtby: this.soldTo.fullName, contact: this.soldTo.contactNumber})
                            
-            }, 1000);
+            }, 2000);
           
            
             

@@ -15,6 +15,7 @@ import { SellRequestComponent } from './Components/sell-request/sell-request.com
 import { InsuranceComponent } from './Components/insurance/insurance.component';
 import { CropSoldHistoryComponent } from './Components/crop-sold-history/crop-sold-history.component';
 import { BidderHomeComponent } from './Components/bidder-home/bidder-home.component';
+import { MyBidsComponent } from './Components/my-bids/my-bids.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BidderHomeComponent } from './Components/bidder-home/bidder-home.compon
     SellRequestComponent,
     InsuranceComponent,
     CropSoldHistoryComponent,
-    BidderHomeComponent
+    BidderHomeComponent,
+    MyBidsComponent
   ],
   imports: [
     BrowserModule,

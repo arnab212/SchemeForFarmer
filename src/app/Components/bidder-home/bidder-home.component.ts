@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BidHistory } from 'src/app/Models/BidHistory';
+import { RequestDetails } from 'src/app/Models/RequestDetails';
+import { BidHistoryService } from 'src/app/Services/bid-history.service';
+import { RequestDetailsService } from 'src/app/Services/request-details.service';
 
 
 @Component({
@@ -9,87 +13,82 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class BidderHomeComponent implements OnInit 
 {
-  msg: string="";
-  msg1:string="";
-  msg2:string="";
-  msg3:string="";
-  item: string="";
-  price: string=""; 
+  
   isShow :boolean= true;
-  isShoww:boolean= true;
-  isshow:boolean=true;
-  isshoww:boolean=true;
+  buttonName:string="Hide Details";
+  updatedreq={} as RequestDetails;
+  bid= {} as BidHistory;
+  
+  req: RequestDetails[]=[]
+  showreq: RequestDetails[]=[];
+  currentBidForm=new FormGroup(
+    {
+      bidAmount: new FormControl()
+    }
+  )
  
-  toggleDisplay() {
-    this.isShow = !this.isShow;
+  toggleDisplay(item: any) {
+    item.show = !item.show;
+    if(item.show){
+      
+      this.buttonName="View Details";
+    }
+    else{
+      this.buttonName=" Hide Details";
+    }
   }
-  toggleDisplay1() {
-    this.isShoww = !this.isShoww;
-  }
-  toggleDisplay2() {
-    this.isshow = !this.isshow;
-  }
-  toggleDisplay3() {
-    this.isshoww = !this.isshoww;
-  }
-  constructor() { }
 
-  ngOnInit(): void {
-  }
  
-  /* clickrice(){
-    this.item='Rice';
-    this.price='200';
-    this.msg=this.item+ " "+this.price;
-   
-  }
-  clickwheat(){
-    this.item='Wheat';
-    this.price='300';
-    this.msg1=this.item+" "+this.price;
-  }
-  clickmaize(){
-    this.item='Maize';
-    this.price='400';
-    this.msg2=this.item+" "+this.price
-  }
-  clickpulses(){
-    this.item='Pulses';
-    this.price='500';
-    this.msg3=this.item+" "+this.price
-  } */
-  count = 200;
-  count1=300;
-  count2=400;
-  count3=500;
-
-  increment() {
-    this.count+=100;
+  constructor(private request: RequestDetailsService, private bidhistory: BidHistoryService) 
+  {
+      this.request.getallrequests().subscribe(data=>{this.req=data;
+      console.log(this.req);})
+      setTimeout(() => {
+        for (let set of this.req)
+        {
+          if(!set.status)
+          {
+            this.showreq.push(set);
+          }
+        }
+        
+      }, 2000);
   }
 
-  decrement() {
-    this.count-=100;
+  ngOnInit(): void 
+  { }
+  
+  bidNow(r: RequestDetails)
+  {
+    if(r.cuurentBid<this.currentBidForm.controls.bidAmount.value)
+    {
+      
+      r.cuurentBid=this.currentBidForm.controls.bidAmount.value;
+      console.log(r)
+      this.request.update(r.requestId,r).subscribe(date=>{this.updatedreq=date;
+     console.log(this.updatedreq)})
+     
+        this.bid.bidPrice=r.cuurentBid;
+        this.bid.bidderAadharCardNumber=localStorage.getItem('aadharCardNumber')!;
+        this.bid.requestId=r.requestId;
+        this.bidhistory.createnew(this.bid).subscribe(data=>{this.bid=data})
+       
+    
+    }
+    else{
+      alert("you will have to bid more than the current amount")
+    }
+  
   }
-  increment1() {
-    this.count1+=100;
+  decrement(r: RequestDetails)
+  {
+    r.cuurentBid-=100;
   }
 
-  decrement1() {
-    this.count1-=100;
+  increment(r: RequestDetails)
+  {
+    r.cuurentBid+=100;
   }
-  increment2() {
-    this.count2+=100;
-  }
-
-  decrement2() {
-    this.count2-=100;
-  }
-  increment3() {
-    this.count3+=100;
-  }
-
-  decrement3() {
-    this.count3-=100;
-  }
+  
 
 }

@@ -9,6 +9,7 @@ import { FarmerRegistrationComponent } from './Components/farmer-registration/fa
 import { HomeComponent } from './Components/home/home.component';
 import { InsuranceComponent } from './Components/insurance/insurance.component';
 import { MarketPlaceComponent } from './Components/market-place/market-place.component';
+import { MyBidsComponent } from './Components/my-bids/my-bids.component';
 import { SellRequestComponent } from './Components/sell-request/sell-request.component';
 
 
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path: "insurance", component: InsuranceComponent},
   {path: "crop-sold-history", component: CropSoldHistoryComponent},
   {path: "bidder-home", component: BidderHomeComponent},
-  {path: "crop-sold-history", component: CropSoldHistoryComponent}
+  {path: "mybids", component: MyBidsComponent}
 ];
 
 @NgModule({
