@@ -1,0 +1,43 @@
+<div class="companydetails">
+    <h4>
+        <table>
+            <tr>
+                <td><a class="pull-left" href="/"><img src="assets\Logo.png" id="logo"></a></td>
+                <td>
+                    <span class="panel-heading">Fasal Bima Yojana</span>
+                    <i><p>MINISTRY OF AGRICULTURE &amp; FARMERS WELFARE</p></i>
+                </td>
+            </tr>  
+        </table>
+    </h4>
+</div>
+<div class="outercontainer">
+   
+        <div class="col-md-auto"></div>
+            <form  [formGroup]="claimApproval">
+                <h1> Pending Claim's Approvals</h1> 
+                <div class="movingline" id="movingline"><h6>Refresh the Page after Approval to update table</h6></div>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Sr. No.</th>
+                            <th scope="col">Policy Number</th>
+                            <th scope="col">Aadhar Number</th>
+                            <th scope="col">Approval Status</th>
+        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of showpolicy,let ndx = index">
+                            <th scope="row">{{ndx+1}}</th>
+                            <th>{{item.policyNumber}}</th>
+                            <th>{{item.aadharCardNumber}}</th>
+                            <th><button class="btn btn-outline-success" (click)="onSubmit(item)" type="submit">{{toggleText}}</button></th>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+      
+    
+</div>

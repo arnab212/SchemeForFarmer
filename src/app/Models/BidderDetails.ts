@@ -14,4 +14,5 @@ export interface BidderDetails
     ifsc:string;
 	password:string;
 	status:boolean;
+	
 }

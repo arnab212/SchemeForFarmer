@@ -7,6 +7,7 @@ import { AdminHomeComponent } from './Components/admin-home/admin-home.component
 import { AdminLoginComponent } from './Components/admin-login/admin-login.component';
 import { ApplyInsuranceComponent } from './Components/apply-insurance/apply-insurance.component';
 import { ApproveBiddersComponent } from './Components/approve-bidders/approve-bidders.component';
+import { ApproveClaimsComponent } from './Components/approve-claims/approve-claims.component';
 import { ApproveFarmersComponent } from './Components/approve-farmers/approve-farmers.component';
 import { BidderHomeComponent } from './Components/bidder-home/bidder-home.component';
 import { BidderLoginComponent } from './Components/bidder-login/bidder-login.component';
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path: "admin-home", component: AdminHomeComponent,canActivate:[AdminGuard]},
   {path: "approve-farmers", component: ApproveFarmersComponent,canActivate:[AdminGuard]},
   {path: "approve-bidders", component: ApproveBiddersComponent,canActivate:[AdminGuard]},
-  {path: "insurance", component: ApplyInsuranceComponent,canActivate:[FarmerGuard]}
+  {path: "insurance", component: ApplyInsuranceComponent,canActivate:[FarmerGuard]},
+  {path: "approve-claim", component: ApproveClaimsComponent,canActivate:[AdminGuard]}
 ];
 
 @NgModule({

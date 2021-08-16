@@ -34,4 +34,31 @@ export class ApplyInsuranceService {
    return this.http.get<number>(`${environment.apiUrl}/AppliedInsurances/`+Area+"/"+Season+"/CompanyId");
 
  }
+
+ public getpolicyById(id:number):Observable<any>
+ {
+  return this.http.get<any>(`${environment.apiUrl}/AppliedInsurances/`+id,
+  {
+    headers:new HttpHeaders({
+      'Content-Type':'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Method':'*'
+      
+    })
+  });
+}
+
+public updatePolicy(id:number, policy: ApplyInsurance):Observable<any>
+{
+  return this.http.put<any>(`${environment.apiUrl}/AppliedInsurances/`+id,policy,
+  {
+    headers:new HttpHeaders({
+      'Content-Type':'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Method':'*'
+      
+    })
+  });
+
+}
 }

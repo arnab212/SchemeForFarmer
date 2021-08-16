@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td>
-                <button (click)="toggleViewDetails(item)" class="btn btn-info">{{buttonName}}</button>
+                <button (click)="toggleViewDetails(item)" class="btn btn-info">{{item.show?"View Details":"Hide Details"}}</button>
             </td>
         </tr>
         <div [hidden]="item.show">

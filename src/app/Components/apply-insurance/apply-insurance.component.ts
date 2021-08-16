@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApplyInsurance } from 'src/app/Models/ApplyInsurance';
 import { InsuranceCompany } from 'src/app/Models/InsuranceCompany';
 import { ApplyInsuranceService } from 'src/app/Services/apply-insurance.service';
@@ -25,7 +26,7 @@ export class ApplyInsuranceComponent implements OnInit {
   Aadhar=localStorage.getItem('aadharCardNumber')
 CD:InsuranceCompany[]=[];
  
-  constructor(private ApplyInsuranceService: ApplyInsuranceService, private InsuranceCompanyService: InsuranceCompanyService) { 
+  constructor(private ApplyInsuranceService: ApplyInsuranceService,private route: Router, private InsuranceCompanyService: InsuranceCompanyService) { 
     this.InsuranceCompanyService.getall().subscribe(response=>{ this.CD=response;console.log(this.CD)});
   }
    
@@ -121,11 +122,17 @@ CD:InsuranceCompany[]=[];
     this.AInsurance.aadharCardNumber=this.Aadhar!;
     console.log(this.AInsurance);
     setTimeout(() => {       
-      this.ApplyInsuranceService.CreateAI(this.AInsurance).subscribe(data=>{this.AInsurance=data;console.log(this.AInsurance)});
+      this.ApplyInsuranceService.CreateAI(this.AInsurance).subscribe(data=>{this.AInsurance=data;console.log(this.AInsurance);console.log(this.AInsurance.policyNumber)});
     }, 2000);
+   
     
 
     
+  }
+  logout()
+  {
+    this.route.navigate(['home']);
+    localStorage.removeItem('aadharCardNumber')
   }
 
 }

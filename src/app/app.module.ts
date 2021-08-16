@@ -22,6 +22,7 @@ import { ApproveBiddersComponent } from './Components/approve-bidders/approve-bi
 import { ApproveFarmersComponent } from './Components/approve-farmers/approve-farmers.component';
 import { ApplyInsuranceComponent } from './Components/apply-insurance/apply-insurance.component';
 import { ClaimInsuranceComponent } from './Components/claim-insurance/claim-insurance.component';
+import { ApproveClaimsComponent } from './Components/approve-claims/approve-claims.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ClaimInsuranceComponent } from './Components/claim-insurance/claim-insu
     ApproveBiddersComponent,
     ApproveFarmersComponent,
     ApplyInsuranceComponent,
-    ClaimInsuranceComponent
+    ClaimInsuranceComponent,
+    ApproveClaimsComponent
   ],
   imports: [
     BrowserModule,

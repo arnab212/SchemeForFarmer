@@ -1,0 +1,50 @@
+.companydetails{
+    background: rgba(199, 234, 255, 0.466);
+}
+
+.container
+{
+    background-color: rgba(240, 248, 255, 0.527);
+    /* padding-left: 30%;
+    padding-right: 30%;
+    width: 1500px;
+    height: 500px; */
+    margin: 0 auto;
+    width:500px;
+    padding: 25px;
+    
+}
+
+.form
+{
+    margin: 0 auto;
+    text-align: center;
+}
+#logo{
+    
+    height: 100px;
+}
+html{
+    background-image: url("src/assets/Background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 85%;
+}
+h1{
+    text-align: center;
+}
+div.movingline {
+    width: 500px;
+    height: 50px;
+    font-style: italic;
+    font-weight: bold;
+    position: relative;
+    animation: mymove 15s infinite;
+  }
+  
+  #movingline{animation-timing-function: linear;}
+  @keyframes mymove {
+    from {left: 1500px;}
+    to {left: -500px;}
+  }

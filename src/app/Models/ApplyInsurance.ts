@@ -5,6 +5,7 @@ import { Injectable } from "@angular/core";
 })
 export class ApplyInsurance
 {
+  policyNumber:number=0;
     season:string="";
     cropName:string="";
     sumInsured:number=0;

@@ -21,17 +21,20 @@ export class AdminLoginComponent implements OnInit {
     
   }
 
-  onSubmit() 
+  onSubmit(e:any) 
   {
+    e.preventDefault();
     setTimeout(() => {
       if(this.AdminLogin.valid) 
     {
       console.log(this.v());
     }
+    console.log("1")
     
     if(this.AdminLogin.controls.Password.value=="admin")
     {
       localStorage.setItem('adminName', "admin")
+      console.log("1")
       //redirect to admin
       this.route.navigate(['admin-home']);
       this.flag++;

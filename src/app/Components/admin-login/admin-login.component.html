@@ -5,7 +5,7 @@
 
 <html>
     <div class="form">
-        <form [formGroup]="AdminLogin" (ngSubmit)="onSubmit()">
+        <form [formGroup]="AdminLogin" (ngSubmit)="onSubmit($event)">
             <div class="container">
                 <h2>ADMIN LOGIN</h2><br>
                 <div class="form-row">              

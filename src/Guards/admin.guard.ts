@@ -14,7 +14,7 @@ export class AdminGuard implements CanActivate {
     let bidderid=localStorage.getItem('aadharCardNumber');
     let adminId=localStorage.getItem('adminName');
     
-  if(farmerid!=null && bidderid!=null)
+  if(farmerid==null && bidderid==null)
   {
     
      if(adminId=="admin")
