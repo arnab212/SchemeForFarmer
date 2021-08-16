@@ -20,6 +20,8 @@ import { AdminHomeComponent } from './Components/admin-home/admin-home.component
 import { AdminLoginComponent } from './Components/admin-login/admin-login.component';
 import { ApproveBiddersComponent } from './Components/approve-bidders/approve-bidders.component';
 import { ApproveFarmersComponent } from './Components/approve-farmers/approve-farmers.component';
+import { ApplyInsuranceComponent } from './Components/apply-insurance/apply-insurance.component';
+import { ClaimInsuranceComponent } from './Components/claim-insurance/claim-insurance.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ApproveFarmersComponent } from './Components/approve-farmers/approve-fa
     AdminHomeComponent,
     AdminLoginComponent,
     ApproveBiddersComponent,
-    ApproveFarmersComponent
+    ApproveFarmersComponent,
+    ApplyInsuranceComponent,
+    ClaimInsuranceComponent
   ],
   imports: [
     BrowserModule,

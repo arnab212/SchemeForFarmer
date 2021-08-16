@@ -102,6 +102,11 @@ export class MarketPlaceComponent implements OnInit {
 
     
   }
+  logout()
+  {
+    this.route.navigate(['home']);
+    localStorage.removeItem('aadharCardNumber')
+  }
 
   previousBids(item:RequestDetails)
   {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BidHistory } from 'src/app/Models/BidHistory';
 import { RequestDetails } from 'src/app/Models/RequestDetails';
 import { BidHistoryService } from 'src/app/Services/bid-history.service';
@@ -39,7 +40,7 @@ export class BidderHomeComponent implements OnInit
   }
 
  
-  constructor(private request: RequestDetailsService, private bidhistory: BidHistoryService) 
+  constructor(private request: RequestDetailsService, private bidhistory: BidHistoryService, private route: Router) 
   {
       this.request.getallrequests().subscribe(data=>{this.req=data;
       console.log(this.req);})
@@ -89,6 +90,10 @@ export class BidderHomeComponent implements OnInit
   {
     r.cuurentBid+=100;
   }
-  
+  logout()
+  {
+    this.route.navigate(['home']);
+    localStorage.removeItem('aadharCardNumber');
+  }
 
 }

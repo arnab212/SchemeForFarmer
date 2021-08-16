@@ -1,0 +1,84 @@
+<div class="navbar">
+    <h2 style="padding-top:10px;">Welcome</h2>
+    <a href="/farmer-login" class="btn btn-primary">Logout</a>
+  </div>
+  <div class="sidebar">
+    <a  href="/marketplace">View marketplace</a>
+    <a href="/sell-request">Place Sell Request</a>
+    <a href="/crop-sold-history">View Sold Crop History</a>
+    <a class="active" href="/insurance">Calculate and Claim Insurance</a>
+  </div>
+  
+  <div class="content">
+   <form [formGroup]="ApplyInsurance" (ngSubmit)="submit()">
+    <div class="container">
+        <div class="form-row">
+          <div class="col-25">
+          <label for="Season">Season: </label>
+          </div>
+          <div class="col-75">
+          <input type="text" class="form-control" placeholder="Season" name="Season" id="Season" formControlName="Season">
+      </div>  
+      </div>
+      <div class="form-row">
+          <div class="col-25">
+          <label for="Year">Year: </label>
+          </div>
+          <div class="col-75">
+          <input type="month" class="form-control" placeholder="Year" name="Year" id="Year" formControlName="Year">
+          </div>
+      </div>  
+      <div class="form-row">
+          <div class="form-group col-md-3">
+          <label for="Crop">Crop Name: </label>
+          </div>
+          <div class="form-group col-md-9">
+          <input type="text" class="form-control" placeholder="Crop" name="Crop" id="Crop" formControlName="CropName">
+          </div>
+      </div>     
+      <div class="form-row">
+          <div class="col-25">
+          <label for="Sum Insured">Sum Insured:</label>
+          </div>
+          <div class="col-75">
+          <input type="text" class="form-control" placeholder="Sum Insured" name="SumInsured" id="SumInsured" formControlName="SumInsured">
+           </div>
+      </div>
+      <div class="form-row">
+          <div class="col-25">
+          <label for="Area">Area:</label>
+          </div>
+          <div class="col-75">
+          <input type="text" class="form-control" placeholder="Area" name="Area" id="Area" formControlName="Area">
+      </div>
+      </div>
+      </div>
+    
+      <button class="btn btn-primary" type="reset">Reset</button>  &nbsp;<button class="btn btn-primary" type="submit">Calculate</button><br><br>
+    </form>
+       <table  class="table table-hover table-fixed" >
+       
+          <tr>
+              <th>Insurance Company</th>
+              <th>Sum Insured/Hectar</th>
+              <th>Crop Name</th>
+              <th>Area</th>
+              <th>Sum Insured</th>
+              <th>Premium Amount</th>
+              <th>Apply</th>
+           </tr>
+        <tbody>
+           <tr *ngFor="let c of Ch;index as i">
+              <td>{{c.name}}</td>
+              <td>{{c.sum}}</td>
+              <td>{{c.cname}}</td>
+              <td>{{c.carea}}</td>
+              <td>{{c.csi}}</td>
+              <td>{{c.pa}}</td>
+              <td><button type="button" (click)="apply()">Apply</button></td>
+           </tr>
+        </tbody>
+     </table> 
+    
+    
+  </div>

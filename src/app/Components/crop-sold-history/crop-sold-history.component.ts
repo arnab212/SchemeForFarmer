@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BidderDetails } from 'src/app/Models/BidderDetails';
 import { FarmerDetails } from 'src/app/Models/FarmerDetails';
@@ -30,7 +31,7 @@ export class CropSoldHistoryComponent implements OnInit
   soldTo= {} as BidderDetails;
   soldhistory: any[]=[];
 
-  constructor(private request: RequestDetailsService, private farmer: FarmerDetailsService, private sold:SoldDetailsService, private bidder: BidderDetailsService) 
+  constructor(private request: RequestDetailsService, private farmer: FarmerDetailsService, private sold:SoldDetailsService, private bidder: BidderDetailsService, private route: Router) 
   {
     console.log(this.aadharCardNumber)
     
@@ -45,11 +46,11 @@ export class CropSoldHistoryComponent implements OnInit
     
     
   }
-      
-      
-   
-
-  
+  logout()
+  {
+    this.route.navigate(['home']);
+    localStorage.removeItem('aadharCardNumber')
+  } 
 
  
 

@@ -1,5 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
+
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RequestDetails } from 'src/app/Models/RequestDetails';
 import { SoldDetails } from 'src/app/Models/SoldDetails';
 import { RequestDetailsService } from 'src/app/Services/request-details.service';
@@ -18,7 +20,7 @@ export class MyBidsComponent implements OnInit {
   show: any[]=[];
 
 
-  constructor(private soldhistory: SoldDetailsService, private request: RequestDetailsService) 
+  constructor(private soldhistory: SoldDetailsService, private request: RequestDetailsService, private route: Router) 
   {
     this.soldhistory.getbyId(this.aadhar!).subscribe(data=>{this.sold=data;
     console.log(this.sold);});
@@ -27,6 +29,11 @@ export class MyBidsComponent implements OnInit {
       
     
    
+  }
+  logout()
+  {
+    this.route.navigate(['home']);
+    localStorage.removeItem('aadharCardNumber');
   }
 
   ngOnInit(): void 

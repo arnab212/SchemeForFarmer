@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from 'src/Guards/admin.guard';
+import { BidderGuard } from 'src/Guards/bidder.guard';
+import { FarmerGuard } from 'src/Guards/famrer.guard';
 import { AdminHomeComponent } from './Components/admin-home/admin-home.component';
 import { AdminLoginComponent } from './Components/admin-login/admin-login.component';
+import { ApplyInsuranceComponent } from './Components/apply-insurance/apply-insurance.component';
 import { ApproveBiddersComponent } from './Components/approve-bidders/approve-bidders.component';
 import { ApproveFarmersComponent } from './Components/approve-farmers/approve-farmers.component';
 import { BidderHomeComponent } from './Components/bidder-home/bidder-home.component';
@@ -24,16 +28,17 @@ const routes: Routes = [
   {path: "bidder-login", component: BidderLoginComponent},
   {path: "farmer-registration", component: FarmerRegistrationComponent},
   {path: "bidder-registration", component: BidderRegistrationComponent},
-  {path: "marketplace", component: MarketPlaceComponent},
-  {path: "sell-request", component: SellRequestComponent},
-  {path: "insurance", component: InsuranceComponent},
-  {path: "crop-sold-history", component: CropSoldHistoryComponent},
-  {path: "bidder-home", component: BidderHomeComponent},
-  {path: "mybids", component: MyBidsComponent},
+  {path: "marketplace", component: MarketPlaceComponent,canActivate:[FarmerGuard]},
+  {path: "sell-request", component: SellRequestComponent,canActivate:[FarmerGuard]},
+  //{path: "insurance", component: InsuranceComponent,canActivate:[FarmerGuard]},
+  {path: "crop-sold-history", component: CropSoldHistoryComponent,canActivate:[FarmerGuard]},
+  {path: "bidder-home", component: BidderHomeComponent,canActivate:[BidderGuard]},
+  {path: "mybids", component: MyBidsComponent,canActivate:[BidderGuard]},
   {path: "admin-login", component: AdminLoginComponent},
-  {path: "admin-home", component: AdminHomeComponent},
-  {path: "approve-farmers", component: ApproveFarmersComponent},
-  {path: "approve-bidders", component: ApproveBiddersComponent}
+  {path: "admin-home", component: AdminHomeComponent,canActivate:[AdminGuard]},
+  {path: "approve-farmers", component: ApproveFarmersComponent,canActivate:[AdminGuard]},
+  {path: "approve-bidders", component: ApproveBiddersComponent,canActivate:[AdminGuard]},
+  {path: "insurance", component: ApplyInsuranceComponent,canActivate:[FarmerGuard]}
 ];
 
 @NgModule({

@@ -80,5 +80,10 @@ create(data:any)
     } 
 
   }
+  logout()
+  {
+    this.route.navigate(['home']);
+    localStorage.removeItem('aadharCardNumber')
+  }
 }
 

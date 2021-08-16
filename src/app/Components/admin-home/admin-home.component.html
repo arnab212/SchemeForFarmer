@@ -1,4 +1,25 @@
+<div class="companydetails">
+    <h4>
+        <table>
+            <tr>
+                <td><a class="pull-left" href="/"><img src="assets\Logo.png" id="logo"></a></td>
+                <td>
+                    <span class="panel-heading">Fasal Bima Yojana</span>
+                    <i><p>MINISTRY OF AGRICULTURE &amp; FARMERS WELFARE</p></i>
+                </td>
+            </tr>  
+        </table>
+    </h4>
+</div>
 
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #bbdff8;">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-brand nav-link active" href="#">Home</a>
+            <button href="admin-login" class="btn btn-outline-dark" (click)="logout()">Log Out</button>
+        </div>
+    </div>
+</nav>
 
 <table>
     <tr>
@@ -7,8 +28,8 @@
                 <div class="card-body">
                     <div class="text-center">
                         <h5 class="card-title">Farmers</h5>
-                        <img src="\assets\Help.png"/>
-                        <p class="card-text">Please aprove the pending farmers </p>
+                        <img class="approve" src="\assets\approve.png" style="width: 200px;">
+                        <p class="card-text">Approve pending farmers </p>
                         <a href="approve-farmers" class="btn btn-primary">Check and Approve</a>
                     </div>                      
                 </div>
@@ -19,12 +40,30 @@
                 <div class="card-body">
                     <div class="text-center">
                         <h5 class="card-title">Bidders</h5>
-                        <img src="\assets\Help.png"/>
-                        <p class="card-text">Please aprove the pending bidders</p>
+                        <img class="approve"src="\assets\approve.png" style="width: 200px;">
+                        <p class="card-text">Approve pending bidders</p>
                         <a href="approve-bidders" class="btn btn-primary">Check and Approve</a>
+                    </div>                      
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h5 class="card-title">Claims</h5>
+                        <img class="approve" src="\assets\approve.png" style="width: 200px;">
+                        <p class="card-text">Approve Claims</p>
+                        <a href="approve-claims" class="btn btn-primary">Check and Approve</a>
                     </div>                      
                 </div>
             </div>
         </td>
     </tr>
 </table>
+
+<footer class="page-footer font-small unique-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="#"> SchemeForFarmers.com</a>
+    </div>
+</footer>

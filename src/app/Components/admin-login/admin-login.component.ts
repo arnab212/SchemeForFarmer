@@ -31,6 +31,7 @@ export class AdminLoginComponent implements OnInit {
     
     if(this.AdminLogin.controls.Password.value=="admin")
     {
+      localStorage.setItem('adminName', "admin")
       //redirect to admin
       this.route.navigate(['admin-home']);
       this.flag++;
