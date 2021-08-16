@@ -1,7 +1,7 @@
 export interface BidHistory
 {
     bidId:number;
-    bidderAadharCardNumber?:string;
+    bidderAadharCardNumber:string;
     requestId:number;
     bidPrice:number;
     

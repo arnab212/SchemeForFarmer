@@ -24,4 +24,29 @@ export class BidHistoryService {
       })
     });
   }
+
+  getLatestBid(id:number):Observable<BidHistory>
+     {
+       console.log(id)
+       return this.http.get<BidHistory>(`${environment.apiUrl}/BidHistories/LatestBid/`+id,{
+         headers:new HttpHeaders({
+           'Content-Type':'application/json;charset=UTF-8',
+           'Access-Control-Allow-Origin':'*',
+           'Access-Control-Allow-Method':'*'
+           
+         })
+       });
+     }
+     getPreviousBids(id:number):Observable<BidHistory[]>
+     {
+       console.log(id)
+       return this.http.get<BidHistory[]>(`${environment.apiUrl}/BidHistories/PreviousBids/`+id,{
+         headers:new HttpHeaders({
+           'Content-Type':'application/json;charset=UTF-8',
+           'Access-Control-Allow-Origin':'*',
+           'Access-Control-Allow-Method':'*'
+           
+         })
+       });
+     }
 }

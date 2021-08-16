@@ -1,4 +1,9 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { RequestDetails } from 'src/app/Models/RequestDetails';
+import { SoldDetails } from 'src/app/Models/SoldDetails';
+import { RequestDetailsService } from 'src/app/Services/request-details.service';
+import { SoldDetailsService } from 'src/app/Services/sold-details.service';
 
 @Component({
   selector: 'app-my-bids',
@@ -7,9 +12,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyBidsComponent implements OnInit {
 
-  constructor() { }
+  sold: SoldDetails[]=[]
+  aadhar= localStorage.getItem('aadharCardNumber')
+  req:RequestDetails[]=[];
+  show: any[]=[];
 
-  ngOnInit(): void {
+
+  constructor(private soldhistory: SoldDetailsService, private request: RequestDetailsService) 
+  {
+    this.soldhistory.getbyId(this.aadhar!).subscribe(data=>{this.sold=data;
+    console.log(this.sold);});
+    this.request.getallrequests().subscribe(data=>{this.req=data;
+      console.log(this.req)});
+      
+    
+   
+  }
+
+  ngOnInit(): void 
+  {
+    setTimeout(() => {
+      
+      for(let sol of this.sold)
+      {
+        for(let r of this.req)
+        {
+          if(sol.requestId==r.requestId)
+          {
+            this.show.push({id: sol.requestId,cropname: r.cropName, quantity: r.cropQuantity, cost: sol.soldPrice })
+      
+          console.log(this.show)
+
+          }
+        }
+        
+       
+      }
+      
+    }, 2000);
   }
 
 }

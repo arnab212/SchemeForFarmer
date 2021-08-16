@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminHomeComponent } from './Components/admin-home/admin-home.component';
+import { AdminLoginComponent } from './Components/admin-login/admin-login.component';
+import { ApproveBiddersComponent } from './Components/approve-bidders/approve-bidders.component';
+import { ApproveFarmersComponent } from './Components/approve-farmers/approve-farmers.component';
 import { BidderHomeComponent } from './Components/bidder-home/bidder-home.component';
 import { BidderLoginComponent } from './Components/bidder-login/bidder-login.component';
 import { BidderRegistrationComponent } from './Components/bidder-registration/bidder-registration.component';
@@ -25,7 +29,11 @@ const routes: Routes = [
   {path: "insurance", component: InsuranceComponent},
   {path: "crop-sold-history", component: CropSoldHistoryComponent},
   {path: "bidder-home", component: BidderHomeComponent},
-  {path: "mybids", component: MyBidsComponent}
+  {path: "mybids", component: MyBidsComponent},
+  {path: "admin-login", component: AdminLoginComponent},
+  {path: "admin-home", component: AdminHomeComponent},
+  {path: "approve-farmers", component: ApproveFarmersComponent},
+  {path: "approve-bidders", component: ApproveBiddersComponent}
 ];
 
 @NgModule({

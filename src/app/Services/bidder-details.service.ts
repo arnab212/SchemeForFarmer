@@ -13,7 +13,7 @@ export class BidderDetailsService
   constructor(private http: HttpClient) { }
   // req:string="https://localhost:44356/api/FarmerDetails";
  
-   getall():Observable<BidderDetails[]>
+   getallBidder():Observable<BidderDetails[]>
    {
      return this.http.get<BidderDetails[]>(`${environment.apiUrl}/BidderDetails`)
    }
@@ -37,9 +37,22 @@ export class BidderDetailsService
        })
      });
    }
-   getbyId(id:string):Observable<any>
+   getBidderbyId(id:string):Observable<any>
   {
     return this.http.get<any>(`${environment.apiUrl}/BidderDetails/`+id,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
+  updateBidder(id:string, bidder:BidderDetails):Observable<any>
+  {
+    console.log(bidder)
+    console.log("In UpdateBidderr")
+    
+    return this.http.put<any>(`${environment.apiUrl}/BidderDetails/`+id , bidder,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',

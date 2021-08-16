@@ -1,0 +1,41 @@
+<div class="outercontainer">
+   
+    <div class="col-md-auto"></div>
+        <form [formGroup]="BidderApproval" >
+            <h1> Pending Bidder's Approvals</h1> 
+            <div class="movingline" id="movingline"><h6>Refresh the Page after Approval to update table</h6></div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Sr. No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Aadhar Document</th>
+                        <th scope="col">PAN Document</th>
+                        <th scope="col">Trader Licese Document</th>
+                        <th scope="col">Approval Status</th>
+    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of biddercheck,let ndx = index">
+                        <th scope="row">{{ndx+1}}</th>
+                        <td>{{item.fullName}}</td>
+                        <td (click)="showDocument(item.aadharDocument)"><a href="https://localhost:44395/api/Upload/{{item.aadharDocument}}">Aadhar_{{item.fullName}}</a></td>
+                        <td (click)="showDocument(item.pandocument)"><a href="https://localhost:44395/api/Upload/{{item.pandocument}}">PAN_{{item.fullName}}</a></td>
+                        <td (click)="showDocument(item.tradersLicenseDocument)"><a href="https://localhost:44395/api/Upload/{{item.tradersLicenseDocument}}">Certificate_{{item.fullName}}</a></td>
+                        <!-- <td>
+                            <div class="radio">
+                                <label><input type="radio" [value]="true" [(ngModel)]="item.status" name="status_{{ndx+1}}">Yes</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" [value]="false" [(ngModel)]="item.status" name="status_{{ndx+1}}">No</label>
+                            </div>
+                        </td> -->
+                        <td><button class="btn btn-outline-success" (click)="onSubmit(item)" type="submit">{{toggleText}}</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+  
+
+</div>

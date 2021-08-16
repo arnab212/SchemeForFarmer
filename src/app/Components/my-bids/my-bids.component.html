@@ -5,5 +5,36 @@
 <div class="sidebar">
     <a href="/bidder-home">View Bidding place</a>
     <a  class="active" href="/mybids">My Bids</a>
-    
 </div>
+
+<div class="content">
+
+    <table class="table table-hover table-fixed">
+        <thead>
+        <tr>         
+            <th>Request Id</th>
+            <th>Crop Name</th>
+            <th>Quantity</th>
+            <th>Bought For</th>
+                 
+        </tr>
+      </thead>
+  <tbody *ngFor="let s of show">
+        <tr>
+            <td>{{s.id}}</td>
+            <th>{{s.cropname}}</th>
+            <th>{{s.quantity}}</th>
+            <td>{{s.cost}}</td>
+        </tr>
+      
+  
+  </tbody>
+    </table>
+
+</div>
+
+<footer class="page-footer font-small unique-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="#"> SchemeForFarmers.com</a>
+    </div>
+</footer>

@@ -38,10 +38,30 @@
             </tr>
         </div>
         <tr>
-            <td><a href="" class="btn btn-secondary">Previous Bids</a></td>
+            <td><button class="btn btn-secondary" (click)="previousBids(item)">Previous Bids</button></td>
+            <div  [hidden]="item.show">
+                <table class="table table-hover table-fixed">
+                    <thead>
+                    <tr>
+                        <!-- <th>Bidder Name</th> -->
+                        <th>Previous Bid amount</th>
+                      
+                     
+                    </tr>
+                  </thead>
+              <tbody *ngFor="let i of previousBidList">
+                    <tr>
+                        <!-- <td>{{i.biddername}}</td> -->
+                        <td>{{i.bidPrice}}</td>
+                    </tr>
+                  
+              
+              </tbody>
+                </table>
+            </div>
         </tr>
         <tr>
-            <td><a href="" class="btn btn-success">SELL</a></td>
+            <td><button class="btn btn-success" (click)="soldlist(item)">SELL</button></td>
         </tr>
     </table>
 </div>

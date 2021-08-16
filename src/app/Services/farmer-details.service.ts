@@ -37,4 +37,28 @@ export class FarmerDetailsService {
       })
     });
   }
+  //Method to update an existing player.
+  updateFarmer(id:string,farmer:FarmerDetails):Observable<any>
+  {
+    console.log(farmer)
+    console.log("In UpdateFarmer")
+    
+    return this.http.put<any>(`${environment.apiUrl}/FarmerDetails/`+id , farmer,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
+getFarmerById(id:string):Observable<any>
+  {
+    return this.http.get<any>(`${environment.apiUrl}/FarmerDetails/`+id,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
 }

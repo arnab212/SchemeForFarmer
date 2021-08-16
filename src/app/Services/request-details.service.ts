@@ -44,4 +44,43 @@ export class RequestDetailsService {
         })
       });
      }
+
+     getRequestByAadharAndStatus(id:string):Observable<RequestDetails[]>
+     {
+       console.log(id)
+       return this.http.get<RequestDetails[]>(`${environment.apiUrl}/RequestDetails/GetByAadharandStatus/`+id,{
+         headers:new HttpHeaders({
+           'Content-Type':'application/json;charset=UTF-8',
+           'Access-Control-Allow-Origin':'*',
+           'Access-Control-Allow-Method':'*'
+           
+         })
+       });
+     }
+     getRequestByAadhar(id:string):Observable<RequestDetails[]>
+     {
+       console.log(id)
+       return this.http.get<RequestDetails[]>(`${environment.apiUrl}/RequestDetails/GetByAadhar/`+id,{
+         headers:new HttpHeaders({
+           'Content-Type':'application/json;charset=UTF-8',
+           'Access-Control-Allow-Origin':'*',
+           'Access-Control-Allow-Method':'*'
+           
+         })
+       });
+     }
+     getById(id:number):Observable<RequestDetails>
+     {
+       console.log(id)
+       return this.http.get<RequestDetails>(`${environment.apiUrl}/RequestDetails/`+id,{
+         headers:new HttpHeaders({
+           'Content-Type':'application/json;charset=UTF-8',
+           'Access-Control-Allow-Origin':'*',
+           'Access-Control-Allow-Method':'*'
+           
+         })
+       });
+     }
+
+     
 }

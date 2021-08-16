@@ -21,7 +21,7 @@ export class BidderLoginComponent implements OnInit {
       EmailId: new FormControl('', [Validators.required, Validators.email]),
       Password: new FormControl('', [Validators.required])
     });
-    this.bidder.getall().subscribe(data=>{this.bidders=data;
+    this.bidder.getallBidder().subscribe(data=>{this.bidders=data;
       console.log(this.bidders);});   
    
   }
@@ -37,18 +37,26 @@ export class BidderLoginComponent implements OnInit {
     {
       if(bidder.emailId==this.BidderLogin.controls.EmailId.value && bidder.password==this.BidderLogin.controls.Password.value)
       {
-        localStorage.setItem('aadharCardNumber', bidder.aadharCardNumber)
-        //redirect to farmer home
-        this.route.navigate(['bidder-home']);
-        alert("successful");
+        if(bidder.status)
+        {
+          localStorage.setItem('aadharCardNumber', bidder.aadharCardNumber)
+          //redirect to farmer home
+          this.route.navigate(['bidder-home']);
+          alert("successful");
+          this.flag++;
+          break;
+        }
+        else
+        {
+          alert("Your request is under process, please try again after some time")
+        }
         this.flag++;
-        break;
       }
       
     }
     if(this.flag==0)
     {
-      alert("sorry");
+      alert("Sorry, please enter correct credentials");
     }
       
     }, 2000);
@@ -61,7 +69,7 @@ export class BidderLoginComponent implements OnInit {
   }
   ngOnInit():void
   {
-    this.bidder.getall().subscribe(data=>{this.bidders=data;
+    this.bidder.getallBidder().subscribe(data=>{this.bidders=data;
       console.log(this.bidders);});
   }
 

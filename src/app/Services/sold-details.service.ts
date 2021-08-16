@@ -16,10 +16,10 @@ export class SoldDetailsService {
   {
     return this.http.get<SoldDetails[]>(`${environment.apiUrl}/SoldDetails`)
   }
-  createnew(sold:SoldDetails):Observable<RequestDetails>
+  createnew(sold:SoldDetails):Observable<SoldDetails>
   {
     console.log(sold)
-    return this.http.post<RequestDetails>(`${environment.apiUrl}/SoldDetails`, sold, {
+    return this.http.post<SoldDetails>(`${environment.apiUrl}/SoldDetails`, sold, {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
@@ -28,4 +28,16 @@ export class SoldDetailsService {
       })
     });
   }
+  getbyId(id?:string):Observable<SoldDetails[]>
+     {
+       console.log(id)
+       return this.http.get<SoldDetails[]>(`${environment.apiUrl}/SoldDetails/GetByAadhar/`+id,{
+         headers:new HttpHeaders({
+           'Content-Type':'application/json;charset=UTF-8',
+           'Access-Control-Allow-Origin':'*',
+           'Access-Control-Allow-Method':'*'
+           
+         })
+       });
+     }
 }

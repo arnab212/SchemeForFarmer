@@ -12,4 +12,5 @@ export interface RequestDetails
     cuurentBid:number;
     status:boolean
     show:boolean;
+   
 }

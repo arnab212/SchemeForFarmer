@@ -36,12 +36,21 @@ export class FarmerLoginComponent implements OnInit {
     {
       if(farmer.emailId==this.FarmerLogin.controls.EmailId.value && farmer.password==this.FarmerLogin.controls.Password.value)
       {
-        localStorage.setItem('aadharCardNumber',farmer.aadharCardNumber)
-        //redirect to farmer home
-        this.route.navigate(['marketplace']);
-        alert("successful");
+        if(farmer.status)
+        {
+          localStorage.setItem('aadharCardNumber',farmer.aadharCardNumber)
+          //redirect to farmer home
+          this.route.navigate(['marketplace']);
+          alert("successful");
+          this.flag++;
+          break;
+        }
+        else
+        {
+          alert("Your request is under process, please try again after some time")
+        }
         this.flag++;
-        break;
+        
       }
       
     }

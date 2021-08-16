@@ -16,6 +16,10 @@ import { InsuranceComponent } from './Components/insurance/insurance.component';
 import { CropSoldHistoryComponent } from './Components/crop-sold-history/crop-sold-history.component';
 import { BidderHomeComponent } from './Components/bidder-home/bidder-home.component';
 import { MyBidsComponent } from './Components/my-bids/my-bids.component';
+import { AdminHomeComponent } from './Components/admin-home/admin-home.component';
+import { AdminLoginComponent } from './Components/admin-login/admin-login.component';
+import { ApproveBiddersComponent } from './Components/approve-bidders/approve-bidders.component';
+import { ApproveFarmersComponent } from './Components/approve-farmers/approve-farmers.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { MyBidsComponent } from './Components/my-bids/my-bids.component';
     InsuranceComponent,
     CropSoldHistoryComponent,
     BidderHomeComponent,
-    MyBidsComponent
+    MyBidsComponent,
+    AdminHomeComponent,
+    AdminLoginComponent,
+    ApproveBiddersComponent,
+    ApproveFarmersComponent
   ],
   imports: [
     BrowserModule,

@@ -67,7 +67,7 @@ create(data:any)
   }
   else{alert("sorry your order was not placed")}
     
-  }, 2000);
+  }, 3000);
   
   
 }
