@@ -35,21 +35,7 @@ CD:InsuranceCompany[]=[];
 
   ApplyInsurance=new FormGroup({Season:new FormControl(),Year:new FormControl(),CropName:new FormControl(),SumInsured:new FormControl(),Area:new FormControl()})
   
-  /* submit(){
-    this.create(this.ApplyInsurance.value);
-  } */
-  // get Season(): any { return this.ApplyInsurance.get('Season'); }
-  // get Year(): any { return this.ApplyInsurance.get('Year'); }
-  // get CropName(): any { return this.ApplyInsurance.get('CropName'); }
-  // get SumInsured(): any { return this.ApplyInsurance.get('SumInsured'); }
-  // get Area(): any { return this.ApplyInsurance.get('Area'); }
-  // reset() { 
-  //   this.Season.reset(); this.Year.reset();this.CropName.reset();this.SumInsured.reset();this.Area.reset() } 
-  /* create(ApplyInsurance:any){
-    this.ApplyInsuranceService.CreateAI(ApplyInsurance).subscribe(ApplyInsurance);
-   
-  }
- */
+  
   submit(){
     let Season=this.ApplyInsurance.controls.Season.value;
     this.calculateseason=Season;
@@ -57,8 +43,7 @@ CD:InsuranceCompany[]=[];
     this.calculatearea=Area;
     let CropName=this.ApplyInsurance.controls.CropName.value;
     this.cropname=CropName;
-    //this.ApplyInsuranceService.getPremiumEstimate(Season).subscribe(result=>{
-     this.ApplyInsuranceService.getId(Area,Season).subscribe((result: number)=>{
+    this.ApplyInsuranceService.getId(Area,Season).subscribe((result: number)=>{
        this.id=result;
        console.log("Company Id:"+this.id);
      
@@ -70,10 +55,7 @@ CD:InsuranceCompany[]=[];
         console.log(this.SumInsured1);
         this.CalculatedSumInsured=this.calculatearea*element.sumInsured;
         console.log(this.CalculatedSumInsured);
-        // this.ApplyInsuranceService.getall().subscribe(response=>{ response.forEach(element => {if(element.Season==this.calculateseason){
-        //   this.premiumAmount=0.015*this.CalculatedSumInsured;
-        //   console.log(this.premiumAmount);
-        // }
+       
           
         if(this.calculateseason=="Rabi"){
           this.premiumAmount=0.015*this.CalculatedSumInsured;
@@ -87,20 +69,10 @@ CD:InsuranceCompany[]=[];
         this.premiumAmount=0.05*this.CalculatedSumInsured;
          console.log(this.premiumAmount);
     }
-    // Ch[]=[this.CompanyName,this.SumInsured1,this.cropname,this.calculatearea,this.CalculatedSumInsured];
+   
     this.Ch.push({name:this.CompanyName,sum:this.SumInsured1,cname:this.cropname,carea:this.calculatearea,csi:this.CalculatedSumInsured,pa:this.premiumAmount})
       }
-     
-       /*  setTimeout(() => {
-          for(let r of this.CD){
-            console.log(r.companyName);
-            response.forEach(element=>(console.log(element.companyName)))
-            if(r.companyId==this.id){
-              console.log(r.companyName);
-            }
-          }
-          
-        }, 2000); */  
+      
         
       })
       

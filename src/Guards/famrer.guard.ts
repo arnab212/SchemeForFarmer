@@ -13,8 +13,7 @@ export class FarmerGuard implements CanActivate {
     
     
   if(farmerid!=null )
-  {   
-     
+  {        
       return true;
      
   }

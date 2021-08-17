@@ -16,7 +16,6 @@ import { CropSoldHistoryComponent } from './Components/crop-sold-history/crop-so
 import { FarmerLoginComponent } from './Components/farmer-login/farmer-login.component';
 import { FarmerRegistrationComponent } from './Components/farmer-registration/farmer-registration.component';
 import { HomeComponent } from './Components/home/home.component';
-import { InsuranceComponent } from './Components/insurance/insurance.component';
 import { MarketPlaceComponent } from './Components/market-place/market-place.component';
 import { MyBidsComponent } from './Components/my-bids/my-bids.component';
 import { SellRequestComponent } from './Components/sell-request/sell-request.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
   {path: "bidder-registration", component: BidderRegistrationComponent},
   {path: "marketplace", component: MarketPlaceComponent,canActivate:[FarmerGuard]},
   {path: "sell-request", component: SellRequestComponent,canActivate:[FarmerGuard]},
-  //{path: "insurance", component: InsuranceComponent,canActivate:[FarmerGuard]},
   {path: "crop-sold-history", component: CropSoldHistoryComponent,canActivate:[FarmerGuard]},
   {path: "bidder-home", component: BidderHomeComponent,canActivate:[BidderGuard]},
   {path: "mybids", component: MyBidsComponent,canActivate:[BidderGuard]},
@@ -39,7 +37,7 @@ const routes: Routes = [
   {path: "admin-home", component: AdminHomeComponent,canActivate:[AdminGuard]},
   {path: "approve-farmers", component: ApproveFarmersComponent,canActivate:[AdminGuard]},
   {path: "approve-bidders", component: ApproveBiddersComponent,canActivate:[AdminGuard]},
-  {path: "insurance", component: ApplyInsuranceComponent,canActivate:[FarmerGuard]},
+  {path: "apply-insurance", component: ApplyInsuranceComponent,canActivate:[FarmerGuard]},
   {path: "approve-claim", component: ApproveClaimsComponent,canActivate:[AdminGuard]}
 ];
 
